@@ -1,0 +1,6 @@
+import { prisma } from "../config/db.js";
+export const getNotes = async (req, res) => {};
+export const getNoteId = async (req, res) => {};
+export const createNote = async (req, res) => {};
+export const updateNote = async (req, res) => {};
+export const deleteNote = async (req, res) => {};
