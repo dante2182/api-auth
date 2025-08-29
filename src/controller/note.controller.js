@@ -4,7 +4,7 @@ export const getNotes = async (req, res) => {
   try {
     // Filtrar notas por usuario si está autenticado
     const notes = await prisma.note.findMany({
-      where: req.user ? { userId: req.user.id } : {},
+      where: req.user ? { userId: req.user.id } : { id: String(id) },
       include: {
         user: {
           select: {
