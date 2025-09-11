@@ -1,9 +1,9 @@
-import { Router } from "express";
-import { getUserProfile } from "../controller/user.controller.js";
-import { requireAuth } from "../middlewares/auth.js";
+import { Router } from 'express'
+import { getUserProfile } from '../controller/user.controller.js'
+import { requireAuth } from '../middlewares/auth.middleware.js'
 
-const routes = Router();
+const routes = Router()
 
-routes.get("/profile", requireAuth, getUserProfile);
+routes.get('/profile', requireAuth, getUserProfile)
 
-export default routes;
+export default routes

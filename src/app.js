@@ -1,22 +1,22 @@
-import express from "express";
-import session from "express-session";
-import morgan from "morgan";
-import cors from "cors";
+import express from 'express'
+import session from 'express-session'
+import morgan from 'morgan'
+import cors from 'cors'
 
-import routes from "./routes/index.js";
-import { AUTH_SECRET, NODE_ENV } from "./config/env.js";
+import routes from './routes/index.js'
+import { AUTH_SECRET, NODE_ENV } from './config/env.js'
 
-const app = express();
-app.use(morgan("dev"));
+const app = express()
+app.use(morgan('dev'))
 app.use(
   cors({
-    origin: NODE_ENV === "production",
-    credentials: true,
+    origin: NODE_ENV === 'production',
+    credentials: true
   })
-);
+)
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // Configurar sesión
 app.use(
@@ -25,13 +25,13 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: NODE_ENV === "production",
-      maxAge: 24 * 60 * 60 * 1000,
-    },
+      secure: NODE_ENV === 'production',
+      maxAge: 24 * 60 * 60 * 1000
+    }
   })
-);
+)
 
 // Rutas
-app.use("/api", routes);
+app.use('/api', routes)
 
-export default app;
+export default app
