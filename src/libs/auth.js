@@ -36,9 +36,21 @@ export const authConfig = {
           return null
         }
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email }
+          where: { email: credentials.email },
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            image: true,
+            password: true,
+            role: true,
+            isActive: true
+          }
         })
         if (!user || !user.password) {
+          return null
+        }
+        if (!user.isActive) {
           return null
         }
         const passwordMatch = await compare(credentials.password, user.password)
@@ -49,7 +61,9 @@ export const authConfig = {
           id: user.id,
           email: user.email,
           name: user.name,
-          image: user.image
+          image: user.image,
+          role: user.role,
+          isActive: user.isActive
         }
       }
     })
@@ -58,12 +72,16 @@ export const authConfig = {
     async jwt ({ token, user }) {
       if (user) {
         token.id = user.id
+        token.role = user.role
+        token.isActive = user.isActive
       }
       return token
     },
     async session ({ session, token }) {
       if (token) {
         session.user.id = token.id
+        session.user.role = token.role
+        session.user.isActive = token.isActive
       }
       return session
     }

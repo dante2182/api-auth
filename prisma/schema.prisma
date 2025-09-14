@@ -48,6 +48,8 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  role          Role      @default(USER)
+  isActive      Boolean   @default(true)
   accounts      Account[]
   sessions      Session[]
   createdAt     DateTime  @default(now())
@@ -73,4 +75,10 @@ model Note {
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
 }
