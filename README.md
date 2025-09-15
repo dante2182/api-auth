@@ -2,9 +2,11 @@
 
 <p>This is a robust authentication API that enables secure user authentication through multiple providers including Google, GitHub, and traditional email & password credentials. The API provides a seamless authentication flow for initializing user sessions across different authentication methods.</p>
 
+  <div style="display: flex; justify-content: center; align-items: center;">
   <img src="https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=fff&style=flat-square" alt="Express.js">
   <img src="https://img.shields.io/badge/Auth.js-blue?style=flat-square&logo=Auth.js" alt="Auth.js">
   <img src="https://img.shields.io/badge/Prisma-6.13.0-2D3748?style=flat-square&logo=prisma" alt="Prisma">
+  </div>
 
 ### Prerequisites
 
@@ -84,8 +86,8 @@ pnpm run lint
 
 #### Note Routes
 
-- `POST /api/auth/notes` - Create a new note
-- `GET /api/auth/notes` - Get all notes
-- `GET /api/auth/notes/:id` - Get a note by id
-- `PUT /api/auth/notes/:id` - Update a note by id
-- `DELETE /api/auth/notes/:id` - Delete a note by id
+- `POST /api/notes` - Create a new note
+- `GET /api/notes` - Get all notes
+- `GET /api/notes/:id` - Get a note by id
+- `PUT /api/notes/:id` - Update a note by id
+- `DELETE /api/notes/:id` - Delete a note by id
